@@ -1,4 +1,5 @@
 # README
+
 ## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
@@ -13,6 +14,7 @@
 
 ### Association
 - has_many :comments, dependent: :destroy
+- has_many :items
 - has_one :sending_destination, dependent: :destroy
 - has_one :purchase
 
@@ -24,42 +26,31 @@
 |postage_payer|string|null: false, foreign_key: true|
 |preparation_day|string|null: false ,foreign_key: true|
 |postage_type|string|null: false, foreign_key: true|
+|item＿condition|string|null: false, foreign_key: true|
+|category|references|null: false, foreign_key: true|
+|price|integer|null: false|
+|introduction|text|null: false|
+|item_images|references|null: false, foreign_key: true|
 
 ### Association
 - has_many :comments, dependent: :destroy
 - has_many :item_images, dependent: :destroy
-- belongs_to :category
 - belongs_to_active_hush :item_condition
 - belongs_to_active_hush :postage_payer
 - belongs_to_active_hush :preparation_day
 - belongs_to_active_hush :postage_type
-- belongs_to_active_hush :price
 - belongs_to :category
 - belongs_to :brand
 - belongs_to :seller, class_name: "User"
 - belongs_to :buyer, class_name: "User"
 - belongs_to :user
-
-## buyersテーブル
-|Column|Type|Options|
-|------|----|-------|
-|user_id|integer|foreign_key: true|
-|item_id|integer|foreign_key: true|
-|seller_id|integer|foreign_key: true|
-
-### Association
-- belongs_to :user
-- has_many :items
-- has_many :item_images, dependent: :destroy
-- belongs_to :category
-- belongs_to_active_hush :item_condition
+- Gem :jp_prefecture
 
 ## purchaseテーブル
 Column|Type|Options|
 |------|----|-------|
 |user_id|integer|foreign_key: true|
 |item_id|integer|foreign_key: true|
-|seller_id|integer|foreign_key: true|
 
 ### Association
 - has_one :sending_destination
@@ -75,10 +66,10 @@ Column|Type|Options|
 |house_number|string|null: false|
 |building_name|string|-|
 |phone_number|string|unique: true|
-|user_id|references|null: false, foreign_key: true|
+|user|references|null: false, foreign_key: true|
 
 ### Association
-- belongs_to :user
+- belongs_to :use
 - belongs_to :purchase
 
 ## item_imagesテーブル
