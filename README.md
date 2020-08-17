@@ -13,23 +13,17 @@
 
 ### Association
 - has_many :comments, dependent: :destroy
-- has_many :todo_lists
-- has_many :user_evaluations
-- has_many :seller_items, foreign_key: "seller_id",  class_name: "items"
-- has_many :buyer_items, foreign_key: "buyer_id", class_name: "items"
 - has_one :sending_destination, dependent: :destroy
+- has_one :purchase
 
 ## itemsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-|introduction|text|null: false|
-|price|integer|null: false|
-|trading_status|enum|null: false|
-|preparation_day|references|null: false, foreign_key: true|
-|item_image|references|null: false, foreign_key: true|
-|category|references|null: false, foreign_key: true|
 |deal_closed_date|timestamp|-|
+|postage_payer|string|null: false, foreign_key: true|
+|preparation_day|string|null: false ,foreign_key: true|
+|postage_type|string|null: false, foreign_key: true|
 
 ### Association
 - has_many :comments, dependent: :destroy
@@ -39,9 +33,12 @@
 - belongs_to_active_hush :postage_payer
 - belongs_to_active_hush :preparation_day
 - belongs_to_active_hush :postage_type
+- belongs_to_active_hush :price
+- belongs_to :category
 - belongs_to :brand
 - belongs_to :seller, class_name: "User"
 - belongs_to :buyer, class_name: "User"
+- belongs_to :user
 
 ## buyersテーブル
 |Column|Type|Options|
@@ -53,6 +50,21 @@
 ### Association
 - belongs_to :user
 - has_many :items
+- has_many :item_images, dependent: :destroy
+- belongs_to :category
+- belongs_to_active_hush :item_condition
+
+## purchaseテーブル
+Column|Type|Options|
+|------|----|-------|
+|user_id|integer|foreign_key: true|
+|item_id|integer|foreign_key: true|
+|seller_id|integer|foreign_key: true|
+
+### Association
+- has_one :sending_destination
+- belongs_to :user
+- belongs_to :item
 
 ## sending_destinationsテーブル
 |Column|Type|Options|
@@ -67,18 +79,7 @@
 
 ### Association
 - belongs_to :user
-
-## commentsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|user_id|references|null: false, foreign_key: true|
-|item_id|references|null: false, foreign_key: true|
-|comments|text|null: false|
-|created_at|timestamp|null: false|
-
-### Association
-- belongs_to :user
-- belongs_to :item
+- belongs_to :purchase
 
 ## item_imagesテーブル
 |Column|Type|Options|
@@ -90,44 +91,6 @@
 - belongs_to :item
 
 
-## categoriesテーブル
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null: false|
-|ancestry|string|null: false|
-
-### Association
-- has_many :items
-
-## item_conditionsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|item_condition|string|null: false|
-
-### Association
-- has_many :items
-
-## postage_payersテーブル
-|Column|Type|Options|
-|------|----|-------|
-|preparation_day|string|null: false|
-
-### Association
-- has_many :items
-
-## preparation_daysテーブル
-|Column|Type|Options|
-|------|----|-------|
-|postage_type|string|null: false|
-
-### Association
-- has_many :items
-
-## postage_typeテーブル
-|postage_type|string|null: false|
-
-### Association
-- has_many :items
 
 
 
