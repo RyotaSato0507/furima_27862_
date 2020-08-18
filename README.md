@@ -15,14 +15,13 @@
 ### Association
 - has_many :comments, dependent: :destroy
 - has_many :items
-- has_one :purchase
+- has_many :purchase
 
 ## itemsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
 |user|references|foreign_key: true|
-|deal_closed_date|timestamp|-|
 |postage_payer_id|integer|null: false|
 |preparation_day_id|integer|null: false|
 |postage_type_id|integer|null: false|
@@ -40,10 +39,8 @@
 - belongs_to_active_hush :postage_payer
 - belongs_to_active_hush :preparation_day
 - belongs_to_active_hush :postage_type
-- belongs_to :category
+- belongs_to_active_hush :category
 - belongs_to :brand
-- belongs_to :seller, class_name: "User"
-- belongs_to :buyer, class_name: "User"
 - belongs_to :user
 - Gem :jp_prefecture
 
