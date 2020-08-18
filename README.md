@@ -25,11 +25,10 @@
 |postage_payer_id|integer|null: false|
 |preparation_day_id|integer|null: false|
 |postage_type_id|integer|null: false|
-|item＿condition_id|integer|null: false|
+|item_condition_id|integer|null: false|
 |category_id|integer|null: false|
 |price|integer|null: false|
 |introduction|text|null: false|
-|item_images|references|null: false, foreign_key: true|
 
 ### Association
 - has_one :purchase, dependent: :destroy
