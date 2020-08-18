@@ -14,14 +14,14 @@
 
 ### Association
 - has_many :comments, dependent: :destroy
-- has_many :items
-- has_many :purchase
+- has_many :items, dependent: :destroy
+- has_many :purchases, dependent: :destroy
 
 ## itemsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-|user|references|foreign_key: true|
+|user|references|null: false, foreign_key: true|
 |postage_payer_id|integer|null: false|
 |preparation_day_id|integer|null: false|
 |postage_type_id|integer|null: false|
@@ -32,7 +32,7 @@
 |item_images|references|null: false, foreign_key: true|
 
 ### Association
-- has_one :purchase
+- has_one :purchase, dependent: :destroy
 - has_many :comments, dependent: :destroy
 - has_many :item_images, dependent: :destroy
 - belongs_to_active_hush :item_condition
