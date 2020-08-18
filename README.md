@@ -15,7 +15,6 @@
 ### Association
 - has_many :comments, dependent: :destroy
 - has_many :items
-- has_one :sending_destination, dependent: :destroy
 - has_one :purchase
 
 ## itemsテーブル
@@ -23,11 +22,11 @@
 |------|----|-------|
 |name|string|null: false|
 |deal_closed_date|timestamp|-|
-|postage_payer|string|null: false, foreign_key: true|
-|preparation_day|string|null: false ,foreign_key: true|
-|postage_type|string|null: false, foreign_key: true|
-|item＿condition|string|null: false, foreign_key: true|
-|category|references|null: false, foreign_key: true|
+|postage_payer_id|integer|null: false|
+|preparation_day_id|integer|null: false|
+|postage_type_id|integer|null: false|
+|item＿condition_id|integer|null: false|
+|category-id|integer|null: false|
 |price|integer|null: false|
 |introduction|text|null: false|
 |item_images|references|null: false, foreign_key: true|
@@ -66,10 +65,9 @@ Column|Type|Options|
 |house_number|string|null: false|
 |building_name|string|-|
 |phone_number|string|unique: true|
-|user|references|null: false, foreign_key: true|
+|purchase|string|null: false, foreign_key: true|
 
 ### Association
-- belongs_to :use
 - belongs_to :purchase
 
 ## item_imagesテーブル
