@@ -15,7 +15,7 @@
 ### Association
 - has_many :comments, dependent: :destroy
 - has_many :items, dependent: :destroy
-- has_many :purchases, dependent: :destroy
+- has_many :purchases
 
 ## itemsテーブル
 |Column|Type|Options|
@@ -31,7 +31,7 @@
 |introduction|text|null: false|
 
 ### Association
-- has_one :purchase, dependent: :destroy
+- has_one :purchase
 - has_many :comments, dependent: :destroy
 - has_many :item_images, dependent: :destroy
 - belongs_to_active_hush :item_condition
