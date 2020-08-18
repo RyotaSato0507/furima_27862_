@@ -31,7 +31,7 @@
 |introduction|text|null: false|
 |item_images|references|null: false, foreign_key: true|
 
-### 
+### Association
 - has_one :purchase
 - has_many :comments, dependent: :destroy
 - has_many :item_images, dependent: :destroy
@@ -44,11 +44,11 @@
 - belongs_to :user
 - Gem :jp_prefecture
 
-## purchaseテーブル
+## purchasesテーブル
 Column|Type|Options|
 |------|----|-------|
-|user_id|integer|foreign_key: true|
-|item_id|integer|foreign_key: true|
+|user_id|integer|null: false, foreign_key: true|
+|item_id|integer|null: false, foreign_key: true|
 
 ### Association
 - has_one :sending_destination
@@ -64,7 +64,7 @@ Column|Type|Options|
 |house_number|string|null: false|
 |building_name|string|-|
 |phone_number|string|unique: true|
-|purchase|string|null: false, foreign_key: true|
+|purchase|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :purchase
