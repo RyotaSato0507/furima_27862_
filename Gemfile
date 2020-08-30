@@ -6,7 +6,11 @@ ruby '2.6.5'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.0'
 # Use mysql as the database for Active Record
+<<<<<<< Updated upstream
 gem 'mysql2', '>= 0.5.3'
+=======
+gem 'mysql2', '0.5.3'
+>>>>>>> Stashed changes
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -32,7 +36,10 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails', '~> 4.0.0.beta2'
+<<<<<<< Updated upstream
   gem 'factory_bot_rails'
+=======
+>>>>>>> Stashed changes
 end
 
 group :development do
@@ -57,5 +64,9 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'active_hash'
 gem 'devise'
+<<<<<<< Updated upstream
 gem "aws-sdk-s3", require: false
 gem 'pry-rails'
+=======
+gem 'pry-rails'
+>>>>>>> Stashed changes
